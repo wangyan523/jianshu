@@ -12,8 +12,9 @@ class TodoList extends Component {
     this.handleClick = this.handleClick.bind(this)
   }
   handleChange(e) {
+    console.log(this.input)
     this.setState({
-      inputValue: e.target.value
+      inputValue: this.input.value
     })
   }
   handleClick() {
@@ -33,7 +34,7 @@ class TodoList extends Component {
   render() {
     return (
       <div className="TodoList">
-        <input value={this.state.inputValue} onChange={this.handleChange}/>
+        <input ref={(input) => {this.input = input}} value={this.state.inputValue} onChange={this.handleChange}/>
         <button onClick={this.handleClick}>确认</button>
         <ul>
           <ListItem list={this.state.list} delete={this.handleDelete.bind(this)}/>
